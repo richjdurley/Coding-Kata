@@ -56,5 +56,17 @@ public class FibonnaciSequenceShould {
     assertThat("sequence", sequenceNumber, is(8));
   }
 
+  @Test
+  public void return13WhenUserInputIs8() {
+    //given
+    int userInput = 8;
+
+    //when
+    int sequenceNumber = fibonnaciSequenceGenerator.get(userInput);
+
+    //then
+    assertThat("sequence", sequenceNumber, is(13));
+  }
+
 }
 

@@ -2,7 +2,7 @@ package fibonnaci;
 
 public class FibonnaciSequenceGenerator {
 
-  String fib = "0,1,1,2,3,5";
+  String fib = "0,1,1,2,3,5,8,13";
 
   public int get(int userInput) {
     int n = 1;
