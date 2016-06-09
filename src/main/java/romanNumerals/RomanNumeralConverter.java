@@ -13,7 +13,7 @@ public class RomanNumeralConverter {
   private static Map<Integer, RomanNumeral> map = new LinkedHashMap<>();
 
   static {
-    map.put(1000, RomanNumeral.CM);
+    map.put(1000, RomanNumeral.M);
     map.put(900, RomanNumeral.CM);
     map.put(500, RomanNumeral.D);
     map.put(400, RomanNumeral.CD);
