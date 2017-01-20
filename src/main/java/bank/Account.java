@@ -3,32 +3,39 @@ package bank;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Rich on 21/04/2016.
+ */
 public class Account {
 
-  Double balance;
+  ArrayList<AccountTransaction> transaction_history = new ArrayList<AccountTransaction>();
 
-  ArrayList<Transaction> transactionHistory = new ArrayList<>();
-
-  public Account() {
-    balance = 0.0d;
+  public double getBalanceForTransaction(AccountTransaction transaction) {
+    return transaction_history.subList(0, transaction_history.indexOf(transaction) + 1).stream()
+        .mapToDouble(trans -> trans.getAmount()).sum();
   }
 
-  public void deposit(Double amount) {
-    balance+=amount;
+  public double getFinalBalance() {
+    if (transaction_history.size() > 0)
+      return getBalanceForTransaction(getLastTransaction());
+    else
+      return 0d;
   }
 
-  public void withdraw(Double amount) {
-    if (balance-amount<0)
-      throw new InsufficientBalanceException();
-
-    balance-=amount;
+  private AccountTransaction getLastTransaction() {
+    return transaction_history.get(transaction_history.size() - 1);
   }
 
-  public Double getBalance() {
-    return balance;
+  public void deposit(AccountTransaction deposit) {
+    transaction_history.add(deposit);
   }
 
-  public List<Transaction> getTransactionHistory() {
-    return transactionHistory;
+  public void withdraw(AccountTransaction withdrawl) {
+    transaction_history.add(withdrawl);
   }
+
+  public List<AccountTransaction> getTransactionHistory() {
+    return transaction_history;
+  }
+
 }
